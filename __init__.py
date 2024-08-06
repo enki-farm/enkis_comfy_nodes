@@ -1,6 +1,6 @@
-from .reader import SeaboardReaderNode
-from .wordweighter import WordWeighterNode
-from .composer import PromptComposerNode
+from .nodes.reader import SeaboardReaderNode
+from .nodes.wordweighter import WordWeighterNode
+from .nodes.composer import PromptComposerNode
 
 NODE_CLASS_MAPPINGS = {
     "enki.seaboard.reader" : SeaboardReaderNode,
