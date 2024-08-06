@@ -54,7 +54,7 @@ const ext = {
                     node.setDirtyCanvas(true);
                     app.queuePrompt();
 
-                }, 5));
+                }, 100));
             });
         });
     }
