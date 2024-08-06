@@ -40,21 +40,19 @@ const ext = {
                     );
                 });
 
-                // Subscribe to instrument changes and update the HTML element
-                instrument.subscribe(debounce((change) => {
-                    if (change.length === 0) return;
+                const debouncedQueuePrompt = debounce(() => {app.queuePrompt(); console.log("queued")}, 200);
 
+                // Subscribe to instrument changes and update the HTML element
+                instrument.subscribe((change) => {
                     // round the value to 2 decimal places
                     let cur_value = Math.round(change[0][node.widgets[0].value] * 100) / 100 * 2;
-
-                    if (cur_value === node.widgets_values[2]) return;
 
                     node.widgets[2].value = cur_value;
                     node.widgets[1].value = change[0].noteNumber;
                     node.setDirtyCanvas(true);
-                    app.queuePrompt();
+                    debouncedQueuePrompt();
 
-                }, 100));
+                });
             });
         });
     }
