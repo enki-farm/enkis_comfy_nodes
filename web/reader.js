@@ -18,7 +18,7 @@ const ext = {
         if (node.comfyClass !== "enki.seaboard.reader") return;
 
         var script = document.createElement('script');
-        script.src = 'extensions/enki_custom_nodes/mpe.min.js';
+        script.src = 'extensions/enkis_comfy_nodes/mpe.min.js';
         document.head.appendChild(script);
 
         script.addEventListener('load', function () {
@@ -52,6 +52,7 @@ const ext = {
                     node.widgets[2].value = cur_value;
                     node.widgets[1].value = change[0].noteNumber;
                     node.setDirtyCanvas(true);
+                    app.queuePrompt();
 
                 }, 5));
             });
